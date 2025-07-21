@@ -1,0 +1,232 @@
+openapi: 3.0.3
+info:
+  title: Book search API
+  version: 2.1.0
+  description: Performs a global text search across records, and returns a list of results that match the query.
+
+servers:
+  - url: https://api.bookish.org
+
+paths:
+  /accounts/{account}:
+    post:
+      summary: Create account
+      description: Creates one or more Bookish accounts.
+      tags:
+        - accounts
+      parameters:
+        - name: account
+          in: path
+          description: The new Bookish user account.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Error encountered
+
+  /accounts/{accountId}:
+    get:
+      summary: Get account information
+      description: Retrieves information about the specified account.
+      tags:
+        - accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: The user ID of the Bookish account.
+          required: true
+          schema:
+            type: string
+        - name: includeAccountSettings
+          in: query
+          description: Set to `true` to include detailed settings.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Error encountered
+
+  /accounts/{accountId}/settings:
+    put:
+      summary: Complete update of account information
+      description: Completely override the account information for the specified account.
+      tags:
+        - accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: The account ID for the Bookish account.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Error encountered
+
+    patch:
+      summary: Partial update of account information.
+      description: Partially updates the account information for the specified account.
+      tags:
+        - accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: The account ID for the Bookish account.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Error encountered
+
+  /accounts/{accountId}/update:
+    delete:
+      summary: Delete account.
+      description: Closes the specified account.
+      tags:
+        - accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: The account ID for the Bookish account.
+          required: true
+          schema:
+            type: string
+        - name: redact_user_data
+          in: query
+          description: When set to true, user data is redacted at account deletion. Otherwise false user data is retained at account deletion.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Error encountered
+
+  /books/search/{title}:
+    get:
+      summary: Search titles
+      description: Retrieves any book titles that match the query.
+      tags:
+        - books
+      parameters:
+        - name: title
+          in: path
+          description: The title of the book.
+          required: true
+          schema:
+            type: string
+          example: "The Road"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/BookSearchResponse'
+        '400':
+          description: Error encountered
+
+  /books/search/{ISBN}:
+    get:
+      summary: Search ISBN number
+      description: Retrieves book title with corresponding ISBN.
+      tags:
+        - books
+      parameters:
+        - name: ISBN
+          in: path
+          description: The ISBN number of the book
+          required: true
+          schema:
+            type: string
+          example: 9780307387899
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/BookSearchResponse'
+        '400':
+          description: Error encountered
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "12345"
+        username:
+          type: string
+          example: "user-name"
+        email:
+          type: string
+          format: email
+          example: "user-name@example.com"
+        created_at:
+          type: string
+          format: date-time
+          example: "2025-07-19T14:10:00-05:00"
+        status:
+          type: string
+          enum: [active, inactive, deleted]
+          example: active
+
+    BookSearchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "BID-####"
+        title:
+          type: string
+          example: "The Road"
+        author:
+          type: string
+          example: "Cormac McCarthy"
+        ISBN:
+          type: string
+          example: 9780307387899
+        genre:
+          type: string
+          example: "post-apocalyptic"
+        published_date:
+          type: string
+          example: "2006-09-26"
+        publisher:
+          type: string
+          example: Alfred A. Knopf
+
+externalDocs:
+  description: Documentation on main website
+  url: https://docs/api/bookish.org/search
