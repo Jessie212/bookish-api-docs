@@ -1,25 +1,21 @@
-# Book Search API overview
+# Purpose
 
-This mock/sample API simulates endpoints commonly used in catalog/archival type web applications, and includes endpoints that Create, retrieve, update, and delete resources.
+I am a general technical writer who is now pivoting to developer and API documentation. I have four years of experience simplifying complex enterprise products for both developer and end-user audiences, and I created this mock API for learning and demonstration purposes. This project, as part of my technical writing portfolio, aims to demonstrate my ability to:
 
-## About This API
-
-I created this mock API for learning and demonstration purposes. It's called the Book Search API, and it was created by an online catalog company called Bookish. Bookish is where people who love to read go to love, hate, and discover books.
-
-## Purpose
-
-This project is part of my technical writing portfolio, and aims to demonstrates my ability to:
-
-- Write and design clear, structured, and helpful developer-focused API documentation as a         technical writer.
+- Write and design clear, structured, and helpful developer-focused API documentation as a technical writer.
 - Read and interpret public API behavior.
-- Learn how to use new tools and the OpenAPI standard.
+- Learn how to use new tools and adhere to the OpenAPI standard.
 
-## What is in this Repository?
+## About this API
+
+This mock/sample API is called the Book Search API, and it was created by an online catalog company called Bookish. Bookish is where people who love to read go to love, hate, and discover books. The API simulates endpoints commonly used in catalog/archival type web applications, and includes endpoints that create, retrieve, update, and delete resources.
+
+## What is in this repository?
 
 - Conceptual API documentation in Markdown format.
 - An OpenAPI (Swagger) specification in YAML format.
 - Sample requests and responses in JSON format.
-- This README.md that explains the API project.
+- This README.md that explains my motivation and the API project.
 
 ## Tools used
 
