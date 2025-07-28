@@ -14,7 +14,7 @@ REST API. Primary use cases for the book search API include the following:
 ## API documentation
 
 View general API documentation for the Book Search API
-at: https://docs/api/bookish.org/search. Each endpoint’s documentation includes
+at: https://docs-api.bookish.org/search. Each endpoint’s documentation includes
 the URL of the endpoint and details about its parameters, JSON results, and HTTP
 result codes for success or failure. See [API usage examples](#book-search-endpoints) .
 
@@ -96,7 +96,7 @@ Example response body:
 ```json
 {
     "numFound": 18510,
-    "documentation_url": "https://docs/api/bookish.org/search",
+    "documentation_url": "https://docs-api.bookish.org/search",
     "q": "\"the road\"",
     "docs": [
         {
@@ -145,7 +145,7 @@ Example response body:
 ```json
 {
     "numFound": 124,
-    "documentation_url": "https://docs/api/bookish.org/search",
+    "documentation_url": "https://docs-api.bookish.org/search",
     "q": "",
     "docs": [
         {
@@ -203,7 +203,7 @@ Example response body:
 ```json
 {
     "numFound": 1,
-    "documentation_url": "https://docs/api/bookish.org/search",
+    "documentation_url": "https://docs-api.bookish.org/search",
     "q": "",
     "docs": [
         {
